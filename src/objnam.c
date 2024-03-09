@@ -2187,7 +2187,7 @@ static const char *const as_is[] = {
     "bison",   "deer",      "elk",       "fish",      "fowl",
     "tuna",    "yaki",      "-hai",      "krill",     "manes",
     "moose",   "ninja",     "sheep",     "ronin",     "roshi",
-    "shito",   "tengu",     "ki-rin",    "Nazgul",    "gunyoki",
+    "shito",   "kotengu",     "ki-rin",    "Nazgul",    "gunyoki",
     "piranha", "samurai",   "shuriken", 0,
     /* Note:  "fish" and "piranha" are collective plurals, suitable
        for "wiped out all <foo>".  For "3 <foo>", they should be
@@ -2577,7 +2577,7 @@ const char *oldstr;
 
             /* ends in 's' but not 'es' */
         } else if (!BSTRCMPI(bp, p - 2, "us")) { /* lotus, fungus... */
-            if (BSTRCMPI(bp, p - 6, "tengus") /* but not these... */
+            if (BSTRCMPI(bp, p - 6, "kotengus") /* but not these... */
                 && BSTRCMPI(bp, p - 7, "hezrous"))
                 goto bottom;
         } else if (!BSTRCMPI(bp, p - 2, "ss")

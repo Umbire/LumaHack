@@ -887,7 +887,7 @@ register int after;
 #endif
 
     /* teleport if that lies in our nature */
-    if (ptr == &mons[PM_TENGU] && !rn2(5) && !mtmp->mcan
+    if (ptr == &mons[PM_KOTENGU] && !rn2(5) && !mtmp->mcan
         && !tele_restrict(mtmp)) {
         if (mtmp->mhp < 7 || mtmp->mpeaceful || rn2(2))
             (void) rloc(mtmp, TRUE);

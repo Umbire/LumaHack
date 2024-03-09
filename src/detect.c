@@ -739,7 +739,7 @@ int class;            /* an object class, 0 for all */
             temp.quan = 1L;
             temp.ox = mtmp->mx;
             temp.oy = mtmp->my;
-            temp.corpsenm = PM_TENGU; /* if mimicing a corpse */
+            temp.corpsenm = PM_KOTENGU; /* if mimicing a corpse */
             map_object(&temp, 1);
         } else if (findgold(mtmp->minvent)
                    && (!class || class == COIN_CLASS)) {

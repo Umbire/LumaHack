@@ -454,7 +454,7 @@ xchar worm_tail;            /* mon is actually a worm tail */
             obj.oy = y;
             obj.otyp = mon->mappearance;
             /* might be mimicing a corpse or statue */
-            obj.corpsenm = has_mcorpsenm(mon) ? MCORPSENM(mon) : PM_TENGU;
+            obj.corpsenm = has_mcorpsenm(mon) ? MCORPSENM(mon) : PM_KOTENGU;
             map_object(&obj, !sensed);
             break;
         }
