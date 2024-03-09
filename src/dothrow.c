@@ -796,7 +796,7 @@ int x, y;
  * throwing or kicking something.
  *
  * dx and dy should be the direction of the hurtle, not of the original
- * kick or throw and be only.
+ * kick or throw.
  */
 void
 hurtle(dx, dy, range, verbose)
@@ -819,14 +819,11 @@ boolean verbose;
         return;
     } else if (u.utrap) {
         You("are anchored by the %s.",
-            u.utraptype == TT_WEB
-                ? "web"
-                : u.utraptype == TT_LAVA
-                      ? hliquid("lava")
-                      : u.utraptype == TT_INFLOOR
-                            ? surface(u.ux, u.uy)
-                            : u.utraptype == TT_BURIEDBALL ? "buried ball"
-                                                           : "trap");
+            (u.utraptype == TT_WEB) ? "web"
+            : (u.utraptype == TT_LAVA) ? hliquid("lava")
+              : (u.utraptype == TT_INFLOOR) ? surface(u.ux, u.uy)
+                : (u.utraptype == TT_BURIEDBALL) ? "buried ball"
+                  : "trap");
         nomul(0);
         return;
     }
@@ -841,8 +838,8 @@ boolean verbose;
     nomul(-range);
     multi_reason = "moving through the air";
     nomovemsg = ""; /* it just happens */
-    if (verbose)
-        You("%s in the opposite direction.", range > 1 ? "hurtle" : "float");
+        You("%s in the opposite direction.",
+            (range > 1) ? "hurtle" : "float");
     /* if we're in the midst of shooting multiple projectiles, stop */
     endmultishot(TRUE);
     sokoban_guilt();
