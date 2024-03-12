@@ -1443,13 +1443,27 @@ struct obj *obj;
         obj->age = monstermoves + rnz(100);
 
         switch (oart->inv_prop) {
-        case TAMING: {
-            struct obj pseudo;
+       case SMOKE_CLOUD: {
+            coord cc;
 
-            pseudo =
-                zeroobj; /* neither cursed nor blessed, zero oextra too */
-            pseudo.otyp = SCR_TAMING;
-            (void) seffects(&pseudo);
+            cc.x = u.ux;
+            cc.y = u.uy;
+			/* Cause trouble if cursed or player is wrong role - fix typo in original patch so this works properly */
+			if (!obj->cursed || (Role_switch == oart->role || !oart->role)) {
+				You("may summon a stinking cloud.");
+				pline("Where do you want to center the cloud?");
+				if (getpos(&cc, TRUE, "the desired position") < 0) {
+					pline(Never_mind);
+					obj->age = 0;
+					return 0;
+				}
+				if (!cansee(cc.x, cc.y) || distu(cc.x, cc.y) >= 32) {
+					You("smell something burning.");
+					return 0;
+				}
+			}
+			pline("A cloud of toxic smoke pours out!");
+			(void) create_gas_cloud(cc.x, cc.y, 3+bcsign(obj), 8+4*bcsign(obj));
             break;
         }
         case HEALING: {
@@ -1642,16 +1656,6 @@ struct obj *obj;
                 spoteffects(FALSE);
             } else
                 (void) float_down(I_SPECIAL | TIMEOUT, W_ARTI);
-            break;
-        case INVIS:
-            if (BInvis || Blind)
-                goto nothing_special;
-            newsym(u.ux, u.uy);
-            if (on)
-                Your("body takes on a %s transparency...",
-                     Hallucination ? "normal" : "strange");
-            else
-                Your("body seems to unfade...");
             break;
         }
     }

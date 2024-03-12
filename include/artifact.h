@@ -58,7 +58,7 @@ struct artifact {
 
 /* invoked properties with special powers */
 enum invoke_prop_types {
-    TAMING = (LAST_PROP + 1),
+    SMOKE_CLOUD = (LAST_PROP + 1),
     HEALING,
     ENERGY_BOOST,
     UNTRAP,
