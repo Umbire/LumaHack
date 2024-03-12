@@ -309,7 +309,7 @@ register struct permonst *ptr;
 {
     return (boolean) (is_were(ptr) || ptr->mlet == S_VAMPIRE || is_demon(ptr)
                       || ptr == &mons[PM_SHADE]
-                      || (ptr->mlet == S_IMP && ptr != &mons[PM_KOTENGU]));
+                      || (ptr->mlet == S_IMP && ptr != &mons[PM_TENGU]));
 }
 
 /* True if specific monster is especially affected by light-emitting weapons */
@@ -590,8 +590,8 @@ struct permonst *pm1, *pm2;
         return is_rider(pm2); /* debatable */
     if (is_minion(pm1))
         return is_minion(pm2); /* [needs work?] */
-    /* kotengu don't match imps (first test handled case of both being kotengu) */
-    if (pm1 == &mons[PM_KOTENGU] || pm2 == &mons[PM_KOTENGU])
+    /* tengu don't match imps (first test handled case of both being tengu) */
+    if (pm1 == &mons[PM_TENGU] || pm2 == &mons[PM_TENGU])
         return FALSE;
     if (let1 == S_IMP)
         return (let2 == S_IMP);
