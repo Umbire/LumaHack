@@ -237,6 +237,9 @@ NON_DIGGABLE:(00,00,40,11)
 # Objects
 OBJECT:(')',"quarterstaff"),(20,06),blessed,0,name:"The Staff of Aesculapius"
 OBJECT:('/',"lightning"),(20,06)
+OBJECT:"boulder",(20,06)
+OBJECT:"boulder",(20,06)
+OBJECT:"boulder",(20,06)
 OBJECT:random,random
 OBJECT:random,random
 OBJECT:random,random
